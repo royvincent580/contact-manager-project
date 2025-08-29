@@ -4,13 +4,13 @@ A simple command-line interface for managing contacts with SQLAlchemy ORM and SQ
 
 ## Features
 
-- ✅ Add contacts with name, phone, email, and group
-- ✅ Organize contacts into groups (Family, Friends, Work, etc.)
-- ✅ Add addresses to contacts
-- ✅ List all contacts
-- ✅ Search contacts by group
-- ✅ Update contact information
-- ✅ Delete contacts
+- Add contacts with name, phone, email, and group
+- Organize contacts into groups (Family, Friends, Work, etc.)
+- Add addresses to contacts
+- List all contacts
+- Search contacts by group
+- Update contact information
+- Delete contacts
 
 ## Setup
 

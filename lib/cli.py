@@ -68,7 +68,7 @@ def list_contacts():
         session.close()
         return
     
-    click.echo("\n📋 All Contacts:")
+    click.echo("\n All Contacts:")
     click.echo("-" * 50)
     
     for contact in contacts:
@@ -100,7 +100,7 @@ def list_by_group(group):
         session.close()
         return
     
-    click.echo(f"\n📋 Contacts in '{group}' group:")
+    click.echo(f"\n Contacts in '{group}' group:")
     click.echo("-" * 50)
     
     for contact in contacts:
@@ -171,7 +171,7 @@ def list_groups():
         session.close()
         return
     
-    click.echo("\n📁 All Groups:")
+    click.echo("\n All Groups:")
     click.echo("-" * 30)
     
     for group in groups:
