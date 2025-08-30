@@ -12,14 +12,14 @@ def create_sample_data():
     contacts_data = [
         {"name": "John Doe", "phone": "0712345678", "email": "john@email.com", "group": "Family"},
         {"name": "Jane Smith", "phone": "0156234528", "email": "jane@email.com", "group": "Work"},
-        {"name": "Bob Wilson", "phone": "555-0103", "email": "bob@email.com", "group": "Friends"},
-        {"name": "Alice Brown", "phone": "555-0104", "email": "alice@email.com", "group": "Work"},
+        {"name": "bob milly", "phone": "0721655103", "email": "bob@email.com", "group": "Friends"},
+        {"name": "Alice kamau", "phone": "0729621104", "email": "alice@email.com", "group": "Work"},
     ]
     
     addresses_data = [
-        ("123 Main St", "New York", "10001"),
-        ("456 Oak Ave", "Los Angeles", "90210"),
-        ("789 Pine Rd", "Chicago", "60601"),
+        ("123 ", "New York", "10001"),
+        ("456 ", "Los Angeles", "90210"),
+        ("789 ", "Chicago", "60601"),
     ]
     
     # Create groups
