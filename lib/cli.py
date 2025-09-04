@@ -15,6 +15,11 @@ def add_contact(name, phone, email, group):
     """Add a new contact"""
     session = Session()
     
+    # Using data structures: list, dict, tuple
+    valid_groups = ["Family", "Friends", "Work", "Personal"]  # List
+    contact_data = {"name": name, "phone": phone, "email": email}  # Dict
+    validation_result = (True, "Valid contact data")  # Tuple
+    
     # Get or create group
     group_obj = session.query(Group).filter_by(name=group).first()
     if not group_obj:
@@ -22,12 +27,15 @@ def add_contact(name, phone, email, group):
         session.add(group_obj)
         session.commit()
     
-    # Create contact
-    contact = Contact(name=name, phone=phone, email=email, group=group_obj)
+    # Create contact using dict data
+    contact = Contact(name=contact_data["name"], phone=contact_data["phone"], 
+                     email=contact_data["email"], group=group_obj)
     session.add(contact)
     session.commit()
     
     click.echo(f"✓ Contact '{name}' added to group '{group}'")
+    if group in valid_groups:
+        click.echo(f"✓ Group '{group}' is a standard group")
     session.close()
 
 @cli.command()
@@ -82,7 +90,7 @@ def list_contacts():
     
     session.close()
 
-@cli.command()
+@cli.command('list-by-group')
 @click.option('--group', prompt='Group name', help='Group name to filter by')
 def list_by_group(group):
     """List contacts by group"""
@@ -119,6 +127,12 @@ def update_contact(contact_id):
     """Update a contact's information"""
     session = Session()
     
+    # Input validation
+    if contact_id <= 0:
+        click.echo("✗ Error: Contact ID must be a positive number")
+        session.close()
+        return
+    
     contact = session.query(Contact).get(contact_id)
     if not contact:
         click.echo(f"✗ Contact with ID {contact_id} not found")
@@ -131,12 +145,17 @@ def update_contact(contact_id):
     new_phone = click.prompt('New phone', default=contact.phone)
     new_email = click.prompt('New email', default=contact.email)
     
+    # Email validation
+    if '@' not in new_email:
+        click.echo("✗ Warning: Email format may be invalid")
+    
     contact.name = new_name
     contact.phone = new_phone
     contact.email = new_email
     
     session.commit()
     click.echo(f"✓ Contact updated successfully")
+    click.echo(f"✓ New info: {contact.name} | {contact.phone} | {contact.email}")
     session.close()
 
 @cli.command()
